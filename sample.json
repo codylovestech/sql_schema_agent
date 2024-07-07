@@ -1,0 +1,4115 @@
+
+{
+  "_id": {
+    "$oid": "668459379b5c528e24d84e99"
+  },
+  "description": "This is the target schema definition for the shopify SQL schema. It contains products, shops, orders, line_items and all inventory related tables. It also contains all foreign keys and indexes. The data structure is designed for react-flow with the attributes nodes and edges. inside of the objects the type definition is table, index or foreign_key. The nodes are the tables and the edges are the foreign keys and indexes. The nodes have the attributes id, type, data and position. The edges have the attributes id, source, target, type and animated. The position attribute is the position of the table in the react-flow graph. The data attribute is the table definition with the attributes name, columns and constraints. The columns attribute is an array of column definitions with the attributes name, type, primary_key, not_null, unique, default and foreign_key. The constraints attribute is an array of constraint definitions with the attributes name, type, columns and references. The type attribute is the type of the constraint. The columns attribute is an array of column names and the references attribute is the table name and the column name of the referenced table.",
+  "nodes": [
+    {
+      "id": "order",
+      "type": "table",
+      "data": {
+        "name": "order",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "TIMESTAMP",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "app_id",
+            "type": "string",
+            "comment": "The ID of the app that created the order."
+          },
+          {
+            "name": "billing_address_address_1",
+            "type": "STRING",
+            "comment": "The street address of the billing address."
+          },
+          {
+            "name": "billing_address_address_2",
+            "type": "STRING",
+            "comment": "An optional additional field for the street address of the billing address."
+          },
+          {
+            "name": "billing_address_city",
+            "type": "STRING",
+            "comment": "The city, town, or village of the billing address."
+          },
+          {
+            "name": "billing_address_company",
+            "type": "STRING",
+            "comment": "The company of the person associated with the billing address."
+          },
+          {
+            "name": "billing_address_country",
+            "type": "STRING",
+            "comment": "The name of the country of the billing address."
+          },
+          {
+            "name": "billing_address_country_code",
+            "type": "STRING",
+            "comment": "The two-letter code (ISO 3166-1 format) for the country of the billing address."
+          },
+          {
+            "name": "billing_address_first_name",
+            "type": "STRING",
+            "comment": "The first name of the person associated with the payment method."
+          },
+          {
+            "name": "billing_address_last_name",
+            "type": "STRING",
+            "comment": "The last name of the person associated with the payment method."
+          },
+          {
+            "name": "billing_address_latitude",
+            "type": "STRING",
+            "comment": "The latitude of the billing address."
+          },
+          {
+            "name": "billing_address_longitude",
+            "type": "STRING",
+            "comment": "The longitude of the billing address."
+          },
+          {
+            "name": "billing_address_name",
+            "type": "STRING",
+            "comment": "The full name of the person associated with the payment method."
+          },
+          {
+            "name": "billing_address_phone",
+            "type": "STRING",
+            "comment": "The phone number at the billing address."
+          },
+          {
+            "name": "billing_address_province",
+            "type": "STRING",
+            "comment": "The name of the region (province, state, prefecture, …) of the billing address."
+          },
+          {
+            "name": "billing_address_province_code",
+            "type": "INT64",
+            "comment": "The two-letter abbreviation of the region of the billing address."
+          },
+          {
+            "name": "billing_address_zip",
+            "type": "STRING",
+            "comment": "The postal code (zip, postcode, Eircode, …) of the billing address."
+          },
+          {
+            "name": "browser_ip",
+            "type": "STRING",
+            "comment": "The IP address of the browser used by the customer when they placed the order."
+          },
+          {
+            "name": "buyer_accepts_marketing",
+            "type": "BOOL",
+            "comment": "Whether the customer consented to receive email updates from the shop."
+          },
+          {
+            "name": "cancel_reason",
+            "type": "INT64",
+            "comment": "The reason why the order was canceled."
+          },
+          {
+            "name": "cancelled_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time when the order was canceled."
+          },
+          {
+            "name": "cart_token",
+            "type": "STRING",
+            "comment": "The ID of the cart that's associated with the order."
+          },
+          {
+            "name": "closed_at",
+            "type": "STRING",
+            "comment": "The date and time when the order was closed (archived)."
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "comment": "The autogenerated date and time when the order was created in Shopify."
+          },
+          {
+            "name": "currency",
+            "type": "STRING",
+            "comment": "The three-letter code for the shop currency."
+          },
+          {
+            "name": "customer_id",
+            "type": "INT64",
+            "comment": "The ID of the order's customer."
+          },
+          {
+            "name": "email",
+            "type": "STRING",
+            "comment": "The customer's email address."
+          },
+          {
+            "name": "financial_status",
+            "type": "STRING",
+            "comment": "The status of payments associated with the order. Can only be set when the order is created"
+          },
+          {
+            "name": "fulfillment_status",
+            "type": "STRING",
+            "comment": "The order's status in terms of fulfilled line items."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID of the order, used for API purposes. This is different from the order_number property, which is the ID used by the shop owner and customer."
+          },
+          {
+            "name": "landing_site_base_url",
+            "type": "STRING",
+            "comment": "The URL for the page where the buyer landed when they entered the shop."
+          },
+          {
+            "name": "location_id",
+            "type": "INT64",
+            "comment": "The ID of the physical location where the order was processed."
+          },
+          {
+            "name": "name",
+            "type": "STRING",
+            "comment": "The order name, generated by combining the order_number property with the order prefix and suffix that are set in the merchant's general settings."
+          },
+          {
+            "name": "note",
+            "type": "STRING",
+            "comment": "An optional note that a shop owner can attach to the order."
+          },
+          {
+            "name": "number",
+            "type": "INT64",
+            "comment": "The order's position in the shop's count of orders. Numbers are sequential and start at 1."
+          },
+          {
+            "name": "order_number",
+            "type": "INT64",
+            "comment": "The order 's position in the shop's count of orders starting at 1001. Order numbers are sequential and start at 1001."
+          },
+          {
+            "name": "processed_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time when an order was processed. This value is the date that appears on your orders and that's used in the analytic reports."
+          },
+          {
+            "name": "referring_site",
+            "type": "STRING",
+            "comment": "The website where the customer clicked a link to the shop."
+          },
+          {
+            "name": "shipping_address_address_1",
+            "type": "STRING",
+            "comment": "The street address of the shipping address."
+          },
+          {
+            "name": "shipping_address_address_2",
+            "type": "STRING",
+            "comment": "An optional additional field for the street address of the shipping address."
+          },
+          {
+            "name": "shipping_address_city",
+            "type": "STRING",
+            "comment": "The city, town, or village of the shipping address."
+          },
+          {
+            "name": "shipping_address_company",
+            "type": "STRING",
+            "comment": "The company of the person associated with the shipping address."
+          },
+          {
+            "name": "shipping_address_country",
+            "type": "STRING",
+            "comment": "The name of the country of the shipping address."
+          },
+          {
+            "name": "shipping_address_country_code",
+            "type": "STRING",
+            "comment": "The two-letter code (ISO 3166-1 format) for the country of the shipping address."
+          },
+          {
+            "name": "shipping_address_first_name",
+            "type": "STRING",
+            "comment": "The first name of the person associated with the shipping address."
+          },
+          {
+            "name": "shipping_address_last_name",
+            "type": "STRING",
+            "comment": "The last name of the person associated with the shipping address."
+          },
+          {
+            "name": "shipping_address_latitude",
+            "type": "STRING",
+            "comment": "The latitude of the shipping address."
+          },
+          {
+            "name": "shipping_address_longitude",
+            "type": "STRING",
+            "comment": "The longitude of the shipping address."
+          },
+          {
+            "name": "shipping_address_name",
+            "type": "STRING",
+            "comment": "The full name of the person associated with the payment method."
+          },
+          {
+            "name": "shipping_address_phone",
+            "type": "STRING",
+            "comment": "The phone number at the shipping address."
+          },
+          {
+            "name": "shipping_address_province",
+            "type": "STRING",
+            "comment": "The name of the region (province, state, prefecture, …) of the shipping address."
+          },
+          {
+            "name": "shipping_address_province_code",
+            "type": "INT64",
+            "comment": "The two-letter abbreviation of the region of the shipping address."
+          },
+          {
+            "name": "shipping_address_zip",
+            "type": "STRING",
+            "comment": "The postal code (zip, postcode, Eircode, …) of the shipping address."
+          },
+          {
+            "name": "source_name",
+            "type": "STRING",
+            "comment": "Where the order originated. Can be set only during order creation, and is not writeable afterwards."
+          },
+          {
+            "name": "subtotal_price",
+            "type": "FLOAT64",
+            "comment": "The price of the order in the shop currency after discounts but before shipping, taxes, and tips in the shop currency."
+          },
+          {
+            "name": "taxes_included",
+            "type": "BOOL",
+            "comment": "Whether taxes are included in the order subtotal."
+          },
+          {
+            "name": "test",
+            "type": "BOOL",
+            "comment": "Whether this is a test order."
+          },
+          {
+            "name": "token",
+            "type": "STRING",
+            "comment": "A unique token for the order."
+          },
+          {
+            "name": "total_discounts",
+            "type": "FLOAT64",
+            "comment": "The total discounts applied to the price of the order in the shop currency."
+          },
+          {
+            "name": "total_line_items_price",
+            "type": "FLOAT64",
+            "comment": "The sum of all line item prices in the shop currency."
+          },
+          {
+            "name": "total_price",
+            "type": "FLOAT64",
+            "comment": "The sum of all line item prices, discounts, shipping, taxes, and tips in the shop currency. Must be positive."
+          },
+          {
+            "name": "total_tax",
+            "type": "INT64",
+            "comment": "The sum of all the taxes applied to the order in th shop currency. Must be positive."
+          },
+          {
+            "name": "total_weight",
+            "type": "INT64",
+            "comment": "The sum of all line item weights in grams."
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the order was last modified."
+          },
+          {
+            "name": "user_id",
+            "type": "INT64",
+            "comment": "The ID of the user logged into Shopify POS who processed the order, if applicable."
+          },
+          {
+            "name": "checkout_token",
+            "type": "STRING",
+            "comment": "A unique value when referencing the checkout that's associated with the order."
+          },
+          {
+            "name": "confirmed",
+            "type": "string",
+            "comment": "Whether inventory has been reserved for the order."
+          },
+          {
+            "name": "customer_locale",
+            "type": "string",
+            "comment": "A two-letter or three-letter language code, optionally followed by a region modifier."
+          },
+          {
+            "name": "checkout_id",
+            "type": "string",
+            "comment": "ID of the order's checkout."
+          },
+          {
+            "name": "order_status_url",
+            "type": "string",
+            "comment": "The URL pointing to the order status web page, if applicable."
+          },
+          {
+            "name": "_fivetran_deleted",
+            "type": "string",
+            "comment": "{{ doc('_fivetran_deleted') }}"
+          },
+          {
+            "name": "total_tip_received",
+            "type": "string",
+            "comment": "The sum of all the tips in the order in the shop currency."
+          },
+          {
+            "name": "device_id",
+            "type": "string",
+            "comment": "The ID for the device."
+          },
+          {
+            "name": "presentment_currency",
+            "type": "string",
+            "comment": "The presentment currency that was used to display prices to the customer."
+          },
+          {
+            "name": "total_shipping_price_set",
+            "type": "STRING",
+            "comment": "The total shipping price set for the order in presentment and shop currencies."
+          },
+          {
+            "name": "client_details_user_agent",
+            "type": "string",
+            "comment": "Details of the browsing client, including software and operating versions."
+          },
+          {
+            "name": "total_tax_set",
+            "type": "string",
+            "comment": "The total tax applied to the order in shop and presentment currencies."
+          },
+          {
+            "name": "total_shipping_price_set",
+            "type": "STRING",
+            "comment": "The total shipping price of the order, excluding discounts and returns, in shop and presentment currencies. If taxes_included is set to true, then total_shipping_price_set includes taxes."
+          },
+          {
+            "name": "total_discounts_set",
+            "type": "string",
+            "comment": "The total discounts applied to the price of the order in shop and presentment currencies."
+          },
+          {
+            "name": "total_line_items_price_set",
+            "type": "string",
+            "comment": "The total of all line item prices in shop and presentment currencies."
+          },
+          {
+            "name": "total_price_set",
+            "type": "string",
+            "comment": "The total price of the order in shop and presentment currencies."
+          },
+          {
+            "name": "is_confirmed",
+            "type": "string",
+            "comment": "Whether the order is confirmed."
+          },
+          {
+            "name": "source_identifier",
+            "type": "string",
+            "comment": "The ID of the order placed on the originating platform. This value doesn't correspond to the Shopify ID that's generated from a completed draft."
+          }
+        ],
+        "constraints": [
+          {
+            "name": "pk_order",
+            "type": "primary_key",
+            "columns": [
+              "id"
+            ]
+          },
+          {
+            "name": "fk_order",
+            "type": "foreign_key",
+            "columns": [
+              "customer_id"
+            ],
+            "references": {
+              "table": "customer",
+              "columns": [
+                "id"
+              ]
+            }
+          },
+          {
+            "name": "fk_order",
+            "type": "foreign_key",
+            "columns": [
+              "location_id"
+            ],
+            "references": {
+              "table": "location",
+              "columns": [
+                "id"
+              ]
+            }
+          },
+          {
+            "name": "fk_order",
+            "type": "foreign_key",
+            "columns": [
+              "user_id"
+            ],
+            "references": {
+              "table": "user",
+              "columns": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": -71.83061812112274,
+        "y": -115.14825544246793
+      },
+      "width": 250,
+      "height": 2054,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -71.83061812112274,
+        "y": -115.14825544246793
+      },
+      "dragging": false
+    },
+    {
+      "id": "customer",
+      "type": "table",
+      "data": {
+        "name": "customer",
+        "columns": [
+          {
+            "name": "_fivetran_sycned",
+            "type": "TIMESTAMP",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "accepts_marketing",
+            "type": "BOOL",
+            "comment": "Whether the customer has consented to receive marketing material via email. Deprecated and will be coalesced with `email_marketing_consent_state`."
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time when the customer was created."
+          },
+          {
+            "name": "default_address_id",
+            "type": "INT64",
+            "comment": "The default address for the customer."
+          },
+          {
+            "name": "email",
+            "type": "STRING",
+            "comment": "The unique email address of the customer. Attempting to assign the same email address to multiple customers returns an error."
+          },
+          {
+            "name": "first_name",
+            "type": "STRING",
+            "comment": "The customer's first name."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "A unique identifier for the customer."
+          },
+          {
+            "name": "last_name",
+            "type": "STRING",
+            "comment": "The customer's last name."
+          },
+          {
+            "name": "orders_count",
+            "type": "INT64",
+            "comment": "The number of orders associated with this customer."
+          },
+          {
+            "name": "phone",
+            "type": "INT64",
+            "comment": "The unique phone number (E.164 format) for this customer. Attempting to assign the same phone number to multiple customers returns an error."
+          },
+          {
+            "name": "state",
+            "type": "STRING",
+            "comment": "The state of the customer's account with a shop."
+          },
+          {
+            "name": "tax_exempt",
+            "type": "BOOL",
+            "comment": "Whether the customer is exempt from paying taxes on their order. If true, then taxes won't be applied to an order at checkout. If false, then taxes will be applied at checkout."
+          },
+          {
+            "name": "total_spent",
+            "type": "FLOAT64",
+            "comment": "The total amount of money that the customer has spent across their order history."
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time when the customer information was last updated."
+          },
+          {
+            "name": "verified_email",
+            "type": "BOOL",
+            "comment": "Whether the customer has verified their email address."
+          },
+          {
+            "name": "email_marketing_consent_state",
+            "type": "string",
+            "comment": "The current email marketing state for the customer. New version of `accepts_marketing` field."
+          },
+          {
+            "name": "email_marketing_consent_opt_in_level",
+            "type": "string",
+            "comment": "The marketing subscription opt-in level, as described in the M3AAWG Sender Best Common Practices, that the customer gave when they consented to receive marketing material by email. New version of `marketing_opt_in_level` field."
+          },
+          {
+            "name": "email_marketing_consent_consent_updated_at",
+            "type": "string",
+            "comment": "The date and time when the customer consented to receive marketing material by email. If no date is provided, then the date and time when the consent information was sent is used. New version of `accepts_marketing_updated_at` field."
+          },
+          {
+            "name": "accepts_marketing_updated_at",
+            "type": "string",
+            "comment": "Deprecated. The package will coalesce with `email_marketing_consent_consent_updated_at`."
+          },
+          {
+            "name": "marketing_opt_in_level",
+            "type": "string",
+            "comment": "Deprecated. The package will coalesce with `email_marketing_consent_opt_in_level`."
+          },
+          {
+            "name": "_fivetran_deleted",
+            "type": "string",
+            "comment": "{{ doc('_fivetran_deleted') }}"
+          },
+          {
+            "name": "note",
+            "type": "string",
+            "comment": "A note about the customer."
+          },
+          {
+            "name": "currency",
+            "type": "string",
+            "comment": "The three-letter code (ISO 4217 format) for the currency that the customer used when they paid for their last order. Defaults to the shop currency. Returns the shop currency for test orders."
+          }
+        ],
+        "constraints": [
+          {
+            "name": "fk_customer",
+            "type": "foreign_key",
+            "columns": [
+              "default_address_id"
+            ],
+            "references": {
+              "table": "customer_address",
+              "columns": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": 394.4031576895682,
+        "y": -400.576705679975
+      },
+      "width": 250,
+      "height": 614,
+      "selected": true,
+      "positionAbsolute": {
+        "x": 394.4031576895682,
+        "y": -400.576705679975
+      },
+      "dragging": false
+    },
+    {
+      "id": "order_line",
+      "type": "table",
+      "data": {
+        "name": "order_line",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "TIMESTAMP",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "fulfillable_quantity",
+            "type": "INT64",
+            "comment": "The amount available to fulfill, calculated as follows: quantity - max(refunded_quantity, fulfilled_quantity) - pending_fulfilled_quantity - open_fulfilled_quantity"
+          },
+          {
+            "name": "fulfillment_status",
+            "type": "STRING",
+            "comment": "How far along an order is in terms line items fulfilled."
+          },
+          {
+            "name": "gift_card",
+            "type": "BOOL",
+            "comment": "Whether the item is a gift card. If true, then the item is not taxed or considered for shipping charges."
+          },
+          {
+            "name": "grams",
+            "type": "INT64",
+            "comment": "The weight of the item in grams."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID of the line item."
+          },
+          {
+            "name": "name",
+            "type": "STRING",
+            "comment": "The name of the product variant."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "The ID of the related order."
+          },
+          {
+            "name": "price",
+            "type": "FLOAT64",
+            "comment": "The price of the item before discounts have been applied in the shop currency."
+          },
+          {
+            "name": "product_id",
+            "type": "INT64",
+            "comment": "The ID of the product that the line item belongs to. Can be null if the original product associated with the order is deleted at a later date."
+          },
+          {
+            "name": "quantity",
+            "type": "INT64",
+            "comment": "The number of items that were purchased."
+          },
+          {
+            "name": "requires_shipping",
+            "type": "BOOL",
+            "comment": "Whether the item requires shipping."
+          },
+          {
+            "name": "sku",
+            "type": "STRING",
+            "comment": "The item's SKU (stock keeping unit)."
+          },
+          {
+            "name": "taxable",
+            "type": "BOOL",
+            "comment": "Whether the item was taxable."
+          },
+          {
+            "name": "title",
+            "type": "STRING",
+            "comment": "The title of the product."
+          },
+          {
+            "name": "total_discount",
+            "type": "INT64",
+            "comment": "The total amount of the discount allocated to the line item in the shop currency."
+          },
+          {
+            "name": "variant_id",
+            "type": "INT64",
+            "comment": "The ID of the product variant."
+          },
+          {
+            "name": "vendor",
+            "type": "STRING",
+            "comment": "The name of the item's supplier."
+          },
+          {
+            "name": "index",
+            "type": "INT64",
+            "comment": "Index of the order line."
+          },
+          {
+            "name": "pre_tax_price",
+            "type": "INT64",
+            "comment": "The pre tax price of the line item in shop currency."
+          },
+          {
+            "name": "pre_tax_price_set",
+            "type": "string",
+            "comment": "The pre tax price of the line item in shop currency and presentment currency."
+          },
+          {
+            "name": "price_set",
+            "type": "string",
+            "comment": "The price of the line item in shop and presentment currencies."
+          },
+          {
+            "name": "tax_code",
+            "type": "string",
+            "comment": "Tax code applied to the line item. As multiple taxes can apply to a line item, we recommend referring to `stg_shopify__tax_line`."
+          },
+          {
+            "name": "total_discount_set",
+            "type": "string",
+            "comment": "The total amount allocated to the line item in the presentment currency."
+          },
+          {
+            "name": "variant_title",
+            "type": "string",
+            "comment": "The title of the product variant."
+          },
+          {
+            "name": "variant_inventory_management",
+            "type": "string",
+            "comment": "The fulfillment service that tracks the number of items in stock for the product variant."
+          },
+          {
+            "name": "properties",
+            "type": "string",
+            "comment": "Line item properties."
+          },
+          {
+            "name": "tax_code",
+            "type": "string",
+            "comment": "Tax code applied to the line item. As multiple taxes can apply to a line item, we recommend referring to `stg_shopify__tax_line`."
+          }
+        ],
+        "constraints": [
+          {
+            "name": "fk_order_line",
+            "type": "foreign_key",
+            "columns": [
+              "order_id"
+            ],
+            "references": {
+              "table": "order",
+              "columns": [
+                "id"
+              ]
+            }
+          },
+          {
+            "name": "fk_order_line",
+            "type": "foreign_key",
+            "columns": [
+              "product_id"
+            ],
+            "references": {
+              "table": "product",
+              "columns": [
+                "id"
+              ]
+            }
+          },
+          {
+            "name": "fk_order_line",
+            "type": "foreign_key",
+            "columns": [
+              "variant_id"
+            ],
+            "references": {
+              "table": "product_variant",
+              "columns": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": -1321.0402163320646,
+        "y": 511.79428369587424
+      },
+      "width": 250,
+      "height": 698,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1321.0402163320646,
+        "y": 511.79428369587424
+      },
+      "dragging": false
+    },
+    {
+      "id": "order_line_refund",
+      "type": "table",
+      "data": {
+        "name": "order_line_refund",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "TIMESTAMP",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The unique identifier of the line item in the refund."
+          },
+          {
+            "name": "location_id",
+            "type": "INT64",
+            "comment": "TThe unique identifier of the location where the items will be restockedBD"
+          },
+          {
+            "name": "order_line_id",
+            "type": "INT64",
+            "comment": "The ID of the related line item in the order."
+          },
+          {
+            "name": "quantity",
+            "type": "INT64",
+            "comment": "The quantity of the associated line item that was returned."
+          },
+          {
+            "name": "refund_id",
+            "type": "INT64",
+            "comment": "The ID of the related refund."
+          },
+          {
+            "name": "restock_type",
+            "type": "STRING",
+            "comment": "How this refund line item affects inventory levels."
+          },
+          {
+            "name": "subtotal",
+            "type": "INT64",
+            "comment": "Subtotal amount of the order line refund in shop currency."
+          },
+          {
+            "name": "total_tax",
+            "type": "FLOAT64",
+            "comment": "The total tax applied to the refund in shop currency."
+          },
+          {
+            "name": "subtotal_set",
+            "type": "INT64",
+            "comment": "The subtotal of the refund line item in shop and presentment currencies."
+          },
+          {
+            "name": "total_tax_set",
+            "type": "INT64",
+            "comment": "The total tax of the line item in shop and presentment currencies."
+          },
+          {
+            "name": "subtotal_set",
+            "type": "INT64",
+            "comment": "The subtotal of the refund line item in shop and presentment currencies."
+          }
+        ],
+        "constraints": [
+          {
+            "name": "fk_order_line_refund",
+            "type": "foreign_key",
+            "columns": [
+              "order_line_id"
+            ],
+            "references": {
+              "table": "order_line",
+              "columns": [
+                "id"
+              ]
+            }
+          },
+          {
+            "name": "fk_order_line_refund",
+            "type": "foreign_key",
+            "columns": [
+              "refund_id"
+            ],
+            "references": {
+              "table": "order_refund",
+              "columns": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": -1878.12167853515,
+        "y": 653.1639369318738
+      },
+      "width": 250,
+      "height": 314,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1878.12167853515,
+        "y": 653.1639369318738
+      },
+      "dragging": false
+    },
+    {
+      "id": "product",
+      "type": "table",
+      "data": {
+        "name": "product",
+        "columns": [
+          {
+            "name": "_fivetran_deleted",
+            "type": "BOOL",
+            "comment": "Whether the record has been deleted in the source system."
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "TIMESTAMP",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time when the product was created."
+          },
+          {
+            "name": "handle",
+            "type": "STRING",
+            "comment": "A unique human-friendly string for the product. Automatically generated from the product's title."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "An unsigned 64-bit integer that's used as a unique identifier for the product. Each id is unique across the Shopify system. No two products will have the same id, even if they're from different shops."
+          },
+          {
+            "name": "product_type",
+            "type": "STRING",
+            "comment": "A categorization for the product used for filtering and searching products."
+          },
+          {
+            "name": "published_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the product was published. Can be set to null to unpublish the product from the Online Store channel."
+          },
+          {
+            "name": "published_scope",
+            "type": "STRING",
+            "comment": "Whether the product is published to the Point of Sale channel."
+          },
+          {
+            "name": "title",
+            "type": "STRING",
+            "comment": "The name of the product."
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time when the product was last modified."
+          },
+          {
+            "name": "vendor",
+            "type": "STRING",
+            "comment": "The name of the product's vendor."
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "comment": "The status of the product. Valid values: - active: The product is ready to sell and is available to customers on the online store, sales channels, and apps. By default, existing products are set to active. - archived: The product is no longer being sold and isn't available to customers on sales channels and apps. - draft: The product isn't ready to sell and is unavailable to customers on sales channels and apps. By default, duplicated and unarchived products are set to draft.\n"
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -434.55734271938945,
+        "y": 1020.712832064339
+      },
+      "width": 250,
+      "height": 314,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -434.55734271938945,
+        "y": 1020.712832064339
+      },
+      "dragging": false
+    },
+    {
+      "id": "product_variant",
+      "type": "table",
+      "data": {
+        "name": "product_variant",
+        "columns": [
+          {
+            "name": "barcode",
+            "type": "INT64",
+            "comment": "The barcode, UPC, or ISBN number for the product."
+          },
+          {
+            "name": "compare_at_price",
+            "type": "INT64",
+            "comment": "The original price of the item before an adjustment or a sale in shop currency."
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the product variant was created."
+          },
+          {
+            "name": "fulfillment_service",
+            "type": "STRING",
+            "comment": "The fulfillment service associated with the product variant."
+          },
+          {
+            "name": "grams",
+            "type": "INT64",
+            "comment": "The weight of the product variant in grams."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The unique numeric identifier for the product variant."
+          },
+          {
+            "name": "image_id",
+            "type": "INT64",
+            "comment": "The unique numeric identifier for a product's image. The image must be associated to the same product as the variant."
+          },
+          {
+            "name": "inventory_item_id",
+            "type": "INT64",
+            "comment": "The unique identifier for the inventory item, which is used in the Inventory API to query for inventory information."
+          },
+          {
+            "name": "inventory_management",
+            "type": "STRING",
+            "comment": "The fulfillment service that tracks the number of items in stock for the product variant."
+          },
+          {
+            "name": "inventory_policy",
+            "type": "STRING",
+            "comment": "Whether customers are allowed to place an order for the product variant when it's out of stock."
+          },
+          {
+            "name": "inventory_quantity",
+            "type": "INT64",
+            "comment": "An aggregate of inventory across all locations. To adjust inventory at a specific location, use the InventoryLevel resource."
+          },
+          {
+            "name": "old_inventory_quantity",
+            "type": "INT64",
+            "comment": "This property is deprecated. Use the InventoryLevel resource instead."
+          },
+          {
+            "name": "option_1",
+            "type": "STRING",
+            "comment": "The custom properties that a shop owner uses to define product variants. You can define three options for a product variant: option1, option2, option3."
+          },
+          {
+            "name": "option_2",
+            "type": "INT64",
+            "comment": "The custom properties that a shop owner uses to define product variants. You can define three options for a product variant: option1, option2, option3."
+          },
+          {
+            "name": "option_3",
+            "type": "INT64",
+            "comment": "The custom properties that a shop owner uses to define product variants. You can define three options for a product variant: option1, option2, option3."
+          },
+          {
+            "name": "position",
+            "type": "INT64",
+            "comment": "The order of the product variant in the list of product variants. The first position in the list is 1. The position of variants is indicated by the order in which they are listed."
+          },
+          {
+            "name": "price",
+            "type": "INT64",
+            "comment": "The price of the product variant in shop currency."
+          },
+          {
+            "name": "product_id",
+            "type": "INT64",
+            "comment": "The unique numeric identifier for the product."
+          },
+          {
+            "name": "requires_shipping",
+            "type": "BOOL",
+            "comment": "This property is deprecated. Use the `requires_shipping` property on the InventoryItem resource instead."
+          },
+          {
+            "name": "sku",
+            "type": "INT64",
+            "comment": "A unique identifier for the product variant in the shop. Required in order to connect to a FulfillmentService."
+          },
+          {
+            "name": "taxable",
+            "type": "BOOL",
+            "comment": "Whether a tax is charged when the product variant is sold."
+          },
+          {
+            "name": "tax_code",
+            "type": "STRING",
+            "comment": "This parameter applies only to the stores that have the Avalara AvaTax app installed. Specifies the Avalara tax code for the product variant."
+          },
+          {
+            "name": "title",
+            "type": "STRING",
+            "comment": "The title of the product variant. The title field is a concatenation of the option1, option2, and option3 fields. You can only update title indirectly using the option fields."
+          },
+          {
+            "name": "updated_at",
+            "type": "STRING",
+            "comment": "The date and time when the product variant was last modified. Gets returned in ISO 8601 format."
+          },
+          {
+            "name": "weight",
+            "type": "INT64",
+            "comment": "The weight of the product variant in the unit system specified with weight_unit."
+          },
+          {
+            "name": "weight_unit",
+            "type": "STRING",
+            "comment": "The unit of measurement that applies to the product variant's weight. If you don't specify a value for weight_unit, then the shop's default unit of measurement is applied. Valid values: g, kg, oz, and lb."
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -884.6048189964837,
+        "y": 1217.2348128528329
+      },
+      "width": 250,
+      "height": 674,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -884.6048189964837,
+        "y": 1217.2348128528329
+      },
+      "dragging": false
+    },
+    {
+      "id": "transaction",
+      "type": "table",
+      "data": {
+        "name": "transaction",
+        "columns": [
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID for the transaction."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "The ID for the order that the transaction is associated with."
+          },
+          {
+            "name": "refund_id",
+            "type": "INT64",
+            "comment": "The ID associated with a refund in the refund table."
+          },
+          {
+            "name": "amount",
+            "type": "FLOAT64",
+            "comment": "The amount of money included in the transaction."
+          },
+          {
+            "name": "authorization",
+            "type": "STRING",
+            "comment": "The authorization code associated with the transaction."
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "The date and time when the transaction was created."
+          },
+          {
+            "name": "processed_at",
+            "type": "STRING",
+            "comment": "The date and time when a transaction was processed."
+          },
+          {
+            "name": "device_id",
+            "type": "INT64",
+            "comment": "The ID for the device."
+          },
+          {
+            "name": "gateway",
+            "type": "STRING",
+            "comment": "The name of the gateway the transaction was issued through."
+          },
+          {
+            "name": "source_name",
+            "type": "STRING",
+            "comment": "The origin of the transaction."
+          },
+          {
+            "name": "message",
+            "type": "STRING",
+            "comment": "A string generated by the payment provider with additional information about why the transaction succeeded or failed."
+          },
+          {
+            "name": "currency",
+            "type": "STRING",
+            "comment": "The three-letter code (ISO 4217 format) for the currency used for the payment."
+          },
+          {
+            "name": "location_id",
+            "type": "INT64",
+            "comment": "The ID of the physical location where the transaction was processed."
+          },
+          {
+            "name": "parent_id",
+            "type": "INT64",
+            "comment": "The ID of an associated transaction."
+          },
+          {
+            "name": "payment_avs_result_code",
+            "type": "STRING",
+            "comment": "The response code from the address verification system."
+          },
+          {
+            "name": "payment_credit_card_bin",
+            "type": "INT64",
+            "comment": "The issuer identification number (IIN), formerly known as bank identification number (BIN) of the customer's credit card."
+          },
+          {
+            "name": "payment_cvv_result_code",
+            "type": "INT64",
+            "comment": "The response code from the credit card company indicating whether the customer entered the card security code, or card verification value, correctly."
+          },
+          {
+            "name": "payment_credit_card_number",
+            "type": "INT64",
+            "comment": "The customer's credit card number, with most of the leading digits redacted."
+          },
+          {
+            "name": "payment_credit_card_company",
+            "type": "INT64",
+            "comment": "The name of the company that issued the customer's credit card."
+          },
+          {
+            "name": "kind",
+            "type": "STRING",
+            "comment": "The transaction's type."
+          },
+          {
+            "name": "receipt",
+            "type": "INT64",
+            "comment": "A transaction receipt attached to the transaction by the gateway."
+          },
+          {
+            "name": "currency_exchange_id",
+            "type": "INT64",
+            "comment": "The ID of the adjustment."
+          },
+          {
+            "name": "currency_exchange_adjustment",
+            "type": "INT64",
+            "comment": "The difference between the amounts on the associated transaction and the parent transaction."
+          },
+          {
+            "name": "currency_exchange_original_amount",
+            "type": "INT64",
+            "comment": "The amount of the parent transaction in the shop currency."
+          },
+          {
+            "name": "currency_exchange_final_amount",
+            "type": "INT64",
+            "comment": "The amount of the associated transaction in the shop currency."
+          },
+          {
+            "name": "currency_exchange_currency",
+            "type": "INT64",
+            "comment": "The shop currency."
+          },
+          {
+            "name": "error_code",
+            "type": "INT64",
+            "comment": "A standardized error code, independent of the payment provider."
+          },
+          {
+            "name": "status",
+            "type": "STRING",
+            "comment": "The status of the transaction."
+          },
+          {
+            "name": "test",
+            "type": "BOOL",
+            "comment": "Whether the transaction is a test transaction."
+          },
+          {
+            "name": "user_id",
+            "type": "INT64",
+            "comment": "The ID for the user who was logged into the Shopify POS device when the order was processed, if applicable."
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "authorization_expires_at",
+            "type": "string",
+            "comment": "The date and time (ISO 8601 format) when the Shopify Payments authorization expires."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -1634.336910305902,
+        "y": 1260.9652697802874
+      },
+      "width": 250,
+      "height": 830,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1634.336910305902,
+        "y": 1260.9652697802874
+      },
+      "dragging": false
+    },
+    {
+      "id": "refund",
+      "type": "table",
+      "data": {
+        "name": "refund",
+        "columns": [
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The unique numeric identifier for the refund."
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "Timestamp of the date when the refund was created."
+          },
+          {
+            "name": "processed_at",
+            "type": "STRING",
+            "comment": "Timestamp of the date when the refund was processed."
+          },
+          {
+            "name": "note",
+            "type": "STRING",
+            "comment": "User generated note attached to the refund."
+          },
+          {
+            "name": "restock",
+            "type": "BOOL",
+            "comment": "Boolean indicating if the refund is a result of a restock."
+          },
+          {
+            "name": "user_id",
+            "type": "INT64",
+            "comment": "Reference to the user id which generated the refund."
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "total_duties_set",
+            "type": "INT64",
+            "comment": "Record representing total duties set for the refund."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "Reference to the order which the refund is associated."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -1582.1169053597412,
+        "y": 356.03735931832625
+      },
+      "width": 250,
+      "height": 242,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1582.1169053597412,
+        "y": 356.03735931832625
+      },
+      "dragging": false
+    },
+    {
+      "id": "order_adjustment",
+      "type": "table",
+      "data": {
+        "name": "order_adjustment",
+        "columns": [
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The unique numeric identifier for the order adjustment."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "Reference to the order which the adjustment is associated."
+          },
+          {
+            "name": "refund_id",
+            "type": "INT64",
+            "comment": "Reference to the refund which the adjustment is associated."
+          },
+          {
+            "name": "amount",
+            "type": "INT64",
+            "comment": "Amount of the adjustment."
+          },
+          {
+            "name": "tax_amount",
+            "type": "FLOAT64",
+            "comment": "Tax amount applied to the order adjustment in shop currency."
+          },
+          {
+            "name": "kind",
+            "type": "STRING",
+            "comment": "The kind of order adjustment (eg. refund, restock, etc.)."
+          },
+          {
+            "name": "reason",
+            "type": "STRING",
+            "comment": "The reason for the order adjustment."
+          },
+          {
+            "name": "amount_set",
+            "type": "INT64",
+            "comment": "Amount set towards the order adjustment in shop and presentment currencies."
+          },
+          {
+            "name": "tax_amount_set",
+            "type": "INT64",
+            "comment": "Tax amount set towards the order adjustment in shop and presentment currencies."
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -1907.933801666937,
+        "y": 201.43603594772918
+      },
+      "width": 250,
+      "height": 266,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1907.933801666937,
+        "y": 201.43603594772918
+      },
+      "dragging": false
+    },
+    {
+      "id": "abandoned_checkout",
+      "type": "table",
+      "data": {
+        "name": "abandoned_checkout",
+        "columns": [
+          {
+            "name": "_fivetran_deleted",
+            "type": "INT64",
+            "comment": "{{ doc('_fivetran_deleted') }}"
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "abandoned_checkout_url",
+            "type": "STRING",
+            "comment": "The recovery URL that's sent to a customer so they can recover their checkout."
+          },
+          {
+            "name": "billing_address_address_1",
+            "type": "STRING",
+            "comment": "The street address of the billing address."
+          },
+          {
+            "name": "billing_address_address_2",
+            "type": "string",
+            "comment": "An optional additional field for the street address of the billing address."
+          },
+          {
+            "name": "billing_address_city",
+            "type": "STRING",
+            "comment": "The city of the billing address."
+          },
+          {
+            "name": "billing_address_company",
+            "type": "INT64",
+            "comment": "The company of the person associated with the billing address."
+          },
+          {
+            "name": "billing_address_country",
+            "type": "STRING",
+            "comment": "The name of the country of the billing address."
+          },
+          {
+            "name": "billing_address_country_code",
+            "type": "STRING",
+            "comment": "The two-letter code (ISO 3166-1 alpha-2 format) for the country of the billing address."
+          },
+          {
+            "name": "billing_address_first_name",
+            "type": "STRING",
+            "comment": "The first name of the person associated with the payment method."
+          },
+          {
+            "name": "billing_address_last_name",
+            "type": "STRING",
+            "comment": "The last name of the person associated with the payment method."
+          },
+          {
+            "name": "billing_address_latitude",
+            "type": "FLOAT64",
+            "comment": "The latitude of the billing address."
+          },
+          {
+            "name": "billing_address_longitude",
+            "type": "FLOAT64",
+            "comment": "The longitude of the billing address."
+          },
+          {
+            "name": "billing_address_name",
+            "type": "STRING",
+            "comment": "The full name of the person associated with the payment method."
+          },
+          {
+            "name": "billing_address_phone",
+            "type": "STRING",
+            "comment": "The phone number at the billing address."
+          },
+          {
+            "name": "billing_address_province",
+            "type": "STRING",
+            "comment": "The name of the state or province of the billing address."
+          },
+          {
+            "name": "billing_address_province_code",
+            "type": "STRING",
+            "comment": "The two-letter abbreviation of the state or province of the billing address."
+          },
+          {
+            "name": "billing_address_zip",
+            "type": "INT64",
+            "comment": "The zip or postal code of the billing address."
+          },
+          {
+            "name": "buyer_accepts_marketing",
+            "type": "BOOL",
+            "comment": "Whether the customer would like to receive email updates from the shop. This is set by the 'I want to receive occasional emails about new products, promotions and other news' checkbox during checkout."
+          },
+          {
+            "name": "cart_token",
+            "type": "STRING",
+            "comment": "The ID for the cart that's attached to the checkout."
+          },
+          {
+            "name": "closed_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the checkout was closed. If the checkout was not closed, then this value is null."
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the checkout was created."
+          },
+          {
+            "name": "currency",
+            "type": "STRING",
+            "comment": "The three-letter code (ISO 4217 format) of the shop's default currency at the time of checkout. For the currency that the customer used at checkout, see `presentment_currency`."
+          },
+          {
+            "name": "customer_id",
+            "type": "INT64",
+            "comment": "ID of the customer with the abandoned checkout."
+          },
+          {
+            "name": "customer_locale",
+            "type": "STRING",
+            "comment": "The two or three-letter language code, optionally followed by a region modifier. Example values - en, en-CA."
+          },
+          {
+            "name": "device_id",
+            "type": "INT64",
+            "comment": "The ID of the Shopify POS device that created the checkout."
+          },
+          {
+            "name": "email",
+            "type": "STRING",
+            "comment": "The customer's email address."
+          },
+          {
+            "name": "gateway",
+            "type": "STRING",
+            "comment": "The payment gateway used by the checkout."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID for the checkout."
+          },
+          {
+            "name": "landing_site_base_url",
+            "type": "STRING",
+            "comment": "The URL for the page where the customer entered the shop."
+          },
+          {
+            "name": "location_id",
+            "type": "INT64",
+            "comment": "The ID of the physical location where the checkout was processed."
+          },
+          {
+            "name": "name",
+            "type": "STRING",
+            "comment": "Checkout order number."
+          },
+          {
+            "name": "note",
+            "type": "INT64",
+            "comment": "The text of an optional note that a shop owner can attach to the order."
+          },
+          {
+            "name": "phone",
+            "type": "INT64",
+            "comment": "The customer's phone number for receiving SMS notifications."
+          },
+          {
+            "name": "presentment_currency",
+            "type": "STRING",
+            "comment": "The three-letter code (ISO 4217 format) of the currency that the customer used at checkout. For the shop's default currency, see `currency`."
+          },
+          {
+            "name": "referring_site",
+            "type": "STRING",
+            "comment": "The website that referred the customer to the shop."
+          },
+          {
+            "name": "shipping_address_address_1",
+            "type": "STRING",
+            "comment": "The street address of the shipping address."
+          },
+          {
+            "name": "shipping_address_address_2",
+            "type": "string",
+            "comment": "An optional additional field for the street address of the shipping address."
+          },
+          {
+            "name": "shipping_address_city",
+            "type": "STRING",
+            "comment": "The city of the shipping address."
+          },
+          {
+            "name": "shipping_address_company",
+            "type": "INT64",
+            "comment": "The company of the person associated with the shipping address."
+          },
+          {
+            "name": "shipping_address_country",
+            "type": "STRING",
+            "comment": "The name of the country of the shipping address."
+          },
+          {
+            "name": "shipping_address_country_code",
+            "type": "STRING",
+            "comment": "The two-letter code (ISO 3166-1 alpha-2 format) for the country of the shipping address."
+          },
+          {
+            "name": "shipping_address_first_name",
+            "type": "STRING",
+            "comment": "The first name of the person associated with the shipping address."
+          },
+          {
+            "name": "shipping_address_last_name",
+            "type": "STRING",
+            "comment": "The last name of the person associated with the shipping address."
+          },
+          {
+            "name": "shipping_address_latitude",
+            "type": "FLOAT64",
+            "comment": "The latitude of the shipping address."
+          },
+          {
+            "name": "shipping_address_longitude",
+            "type": "FLOAT64",
+            "comment": "The longitude of the shipping address."
+          },
+          {
+            "name": "shipping_address_name",
+            "type": "STRING",
+            "comment": "The full name of the person associated with the shipping address."
+          },
+          {
+            "name": "shipping_address_phone",
+            "type": "STRING",
+            "comment": "The phone number at the shipping address."
+          },
+          {
+            "name": "shipping_address_province",
+            "type": "STRING",
+            "comment": "The name of the state or province of the shipping address."
+          },
+          {
+            "name": "shipping_address_province_code",
+            "type": "STRING",
+            "comment": "The two-letter abbreviation of the state or province of the shipping address."
+          },
+          {
+            "name": "shipping_address_zip",
+            "type": "STRING",
+            "comment": "The zip or postal code of the shipping address."
+          },
+          {
+            "name": "source_name",
+            "type": "STRING",
+            "comment": "Where the checkout originated. Valid values include `web`, `pos`, `iphone`, `android`."
+          },
+          {
+            "name": "subtotal_price",
+            "type": "FLOAT64",
+            "comment": "The price of the checkout in _presentment_ (customer) currency before shipping and taxes."
+          },
+          {
+            "name": "taxes_included",
+            "type": "BOOL",
+            "comment": "Boolean representing whether taxes are included in the price."
+          },
+          {
+            "name": "token",
+            "type": "STRING",
+            "comment": "A unique ID for a checkout."
+          },
+          {
+            "name": "total_discounts",
+            "type": "FLOAT64",
+            "comment": "The total amount of discounts to be applied in presentment currency."
+          },
+          {
+            "name": "total_duties",
+            "type": "INT64",
+            "comment": "The total duties of the checkout in presentment currency."
+          },
+          {
+            "name": "total_line_items_price",
+            "type": "FLOAT64",
+            "comment": "The sum of the prices of all line items in the checkout in _presentment_ (customer) currency."
+          },
+          {
+            "name": "total_price",
+            "type": "FLOAT64",
+            "comment": "The sum of line item prices, all discounts, shipping costs, and taxes for the checkout in _presentment_ (customer) currency."
+          },
+          {
+            "name": "total_tax",
+            "type": "FLOAT64",
+            "comment": "The sum of all the taxes applied to the checkout in _presentment_ (customer) currency."
+          },
+          {
+            "name": "total_weight",
+            "type": "INT64",
+            "comment": "The sum of all the weights in grams of the line items in the checkout."
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the checkout was last modified."
+          },
+          {
+            "name": "user_id",
+            "type": "INT64",
+            "comment": "The ID of the user who created the checkout."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": 727.9273183523105,
+        "y": -342.3153463728057
+      },
+      "width": 250,
+      "height": 1592,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 727.9273183523105,
+        "y": -342.3153463728057
+      },
+      "dragging": false
+    },
+    {
+      "id": "collection_product",
+      "type": "table",
+      "data": {
+        "name": "collection_product",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "collection_id",
+            "type": "INT64",
+            "comment": "ID referencing the `collection` the product belongs to."
+          },
+          {
+            "name": "product_id",
+            "type": "INT64",
+            "comment": "ID referencing the `product`."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -686.1517261312199,
+        "y": 1497.2711297892668
+      },
+      "width": 250,
+      "height": 98,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -686.1517261312199,
+        "y": 1497.2711297892668
+      },
+      "dragging": false
+    },
+    {
+      "id": "collection",
+      "type": "table",
+      "data": {
+        "name": "collection",
+        "columns": [
+          {
+            "name": "_fivetran_deleted",
+            "type": "BOOL",
+            "comment": "{{ doc('_fivetran_deleted') }}"
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "disjunctive",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the `rules` or disjuctive (logical `OR`) or not. True = disjuctive, false = conjunctive (logical `AND`)."
+          },
+          {
+            "name": "handle",
+            "type": "INT64",
+            "comment": "A unique, human-readable string for the collection automatically generated from its title. This is used in themes by the Liquid templating language to refer to the collection."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID for the collection."
+          },
+          {
+            "name": "published_at",
+            "type": "TIMESTAMP",
+            "comment": "The time and date (ISO 8601 format) when the collection was made visible. Returns null for a hidden collection."
+          },
+          {
+            "name": "published_scope",
+            "type": "INT64",
+            "comment": "Whether the collection is published to the Point of Sale channel. Valid values `web` (the collection is published to the Online Store channel but not published to the Point of Sale channel) and `global` (the collection is published to both the Online Store channel and the Point of Sale channel).\n"
+          },
+          {
+            "name": "rules",
+            "type": "INT64",
+            "comment": "An array of rules that define what products go into the smart collection. Each rule (`column` -- `relation` --> `condition`) has these properties: - `column`: the property of a product being used to populate the smart collection. Ex: 'tag', 'type', 'vendor', 'variant_price', etc. - `relation`: The comparitive relationship between the column choice, and the condition ('equals', 'contains', 'greater_than', etc.) - condition: Select products for a smart collection using a condition. Values are either strings or numbers, depending on the relation value. See the [Shopify docs](https://shopify.dev/api/admin-rest/2022-10/resources/smartcollection#resource-object) for more.\n"
+          },
+          {
+            "name": "sort_order",
+            "type": "INT64",
+            "comment": "The order of the products in the collection. Valid values inclide - `alpha-asc`: The products are sorted alphabetically from A to Z. - `alpha-des`: The products are sorted alphabetically from Z to A. - `best-selling`: The products are sorted by number of sales. - `created`: The products are sorted by the date they were created, from oldest to newest. - `created-desc`: The products are sorted by the date they were created, from newest to oldest. - `manual`: The products are manually sorted by the shop owner. - `price-asc`: The products are sorted by price from lowest to highest. - `price-desc`: The products are sorted by price from highest to lowest.\n"
+          },
+          {
+            "name": "title",
+            "type": "INT64",
+            "comment": "The name of the collection"
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the collection was last modified."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -351.54568177299166,
+        "y": 1474.721634115383
+      },
+      "width": 250,
+      "height": 290,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -351.54568177299166,
+        "y": 1474.721634115383
+      },
+      "dragging": false
+    },
+    {
+      "id": "customer_tag",
+      "type": "table",
+      "data": {
+        "name": "customer_tag",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "index",
+            "type": "INT64",
+            "comment": "Index (starting from 1) represnting when the tag was placed on the customer."
+          },
+          {
+            "name": "customer_id",
+            "type": "INT64",
+            "comment": "ID of the customer being tagged."
+          },
+          {
+            "name": "value",
+            "type": "STRING",
+            "comment": "Value of the tag."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": 44.13690172636352,
+        "y": -366.71001171953554
+      },
+      "width": 250,
+      "height": 122,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 44.13690172636352,
+        "y": -366.71001171953554
+      },
+      "dragging": false
+    },
+    {
+      "id": "discount_code",
+      "type": "table",
+      "data": {
+        "name": "discount_code",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "code",
+            "type": "STRING",
+            "comment": "The case-insensitive discount code that customers use at checkout. Shopify recommends this map onto the associated `price_rule.title`."
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the discount code was created."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID for the discount code."
+          },
+          {
+            "name": "price_rule_id",
+            "type": "INT64",
+            "comment": "The ID for the price rule that this discount code belongs to."
+          },
+          {
+            "name": "updated_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the discount code was updated."
+          },
+          {
+            "name": "usage_count",
+            "type": "FLOAT64",
+            "comment": "The number of times that the discount code has been redeemed."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": 275.80172837134467,
+        "y": 1111.6455723168178
+      },
+      "width": 250,
+      "height": 194,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 275.80172837134467,
+        "y": 1111.6455723168178
+      },
+      "dragging": false
+    },
+    {
+      "id": "fulfillment",
+      "type": "table",
+      "data": {
+        "name": "fulfillment",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "The date and time when the fulfillment was created. The API returns this value in ISO 8601 format."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID for the fulfillment."
+          },
+          {
+            "name": "location_id",
+            "type": "INT64",
+            "comment": "The unique identifier of the location that the fulfillment was processed at."
+          },
+          {
+            "name": "name",
+            "type": "STRING",
+            "comment": "The uniquely identifying fulfillment name, consisting of two parts separated by a .. The first part represents the order name and the second part represents the fulfillment number.  The fulfillment number automatically increments depending on how many fulfillments are in an order (e.g. #1001.1, #1001.2).\n"
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "The unique numeric identifier for the order."
+          },
+          {
+            "name": "receipt_authorization",
+            "type": "INT64",
+            "comment": "The authorization code from the receipt."
+          },
+          {
+            "name": "service",
+            "type": "STRING",
+            "comment": "The fulfillment service associated with the fulfillment."
+          },
+          {
+            "name": "shipment_status",
+            "type": "INT64",
+            "comment": "The current shipment status of the fulfillment. Valid values include: - label_printed: A label for the shipment was purchased and printed. - label_purchased: A label for the shipment was purchased, but not printed. - attempted_delivery: Delivery of the shipment was attempted, but unable to be completed. - ready_for_pickup: The shipment is ready for pickup at a shipping depot. - confirmed: The carrier is aware of the shipment, but hasn't received it yet. - in_transit: The shipment is being transported between shipping facilities on the way to its destination. - out_for_delivery: The shipment is being delivered to its final destination. - delivered: The shipment was succesfully delivered. - failure: Something went wrong when pulling tracking information for the shipment, such as the tracking number was invalid or the shipment was canceled.\n"
+          },
+          {
+            "name": "status",
+            "type": "STRING",
+            "comment": "The status of the fulfillment. Valid values include: - pending: Shopify has created the fulfillment and is waiting for the third-party fulfillment service to transition it to 'open' or 'success'. - open: The fulfillment has been acknowledged by the service and is in processing. - success: The fulfillment was successful. - cancelled: The fulfillment was cancelled. - error: There was an error with the fulfillment request. - failure: The fulfillment request failed.\n"
+          },
+          {
+            "name": "tracking_company",
+            "type": "INT64",
+            "comment": "The name of the tracking company."
+          },
+          {
+            "name": "tracking_number",
+            "type": "INT64",
+            "comment": "Primary tracking number for the order."
+          },
+          {
+            "name": "tracking_numbers",
+            "type": "STRING",
+            "comment": "A list of tracking numbers, provided by the shipping company."
+          },
+          {
+            "name": "tracking_urls",
+            "type": "STRING",
+            "comment": "The URLs of tracking pages for the fulfillment."
+          },
+          {
+            "name": "updated_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the fulfillment was last modified."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -520.4071861050693,
+        "y": -290.07540643908004
+      },
+      "width": 250,
+      "height": 386,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -520.4071861050693,
+        "y": -290.07540643908004
+      },
+      "dragging": false
+    },
+    {
+      "id": "inventory_item",
+      "type": "table",
+      "data": {
+        "name": "inventory_item",
+        "columns": [
+          {
+            "name": "_fivetran_deleted",
+            "type": "BOOL",
+            "comment": "{{ doc('_fivetran_deleted') }}"
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "cost",
+            "type": "INT64",
+            "comment": "The unit cost of the inventory item. The shop's default currency is used."
+          },
+          {
+            "name": "country_code_of_origin",
+            "type": "INT64",
+            "comment": "The country code (ISO 3166-1 alpha-2) of where the item came from."
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the inventory item was created."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID of the inventory item."
+          },
+          {
+            "name": "province_code_of_origin",
+            "type": "INT64",
+            "comment": "The province code (ISO 3166-2 alpha-2) of where the item came from. The province code is only used if the shipping provider for the inventory item is Canada Post."
+          },
+          {
+            "name": "requires_shipping",
+            "type": "INT64",
+            "comment": "Boolean representing whether a customer needs to provide a shipping address when placing an order containing the inventory item."
+          },
+          {
+            "name": "sku",
+            "type": "INT64",
+            "comment": "The unique SKU (stock keeping unit) of the inventory item."
+          },
+          {
+            "name": "tracked",
+            "type": "INT64",
+            "comment": "Boolean representing whether inventory levels are tracked for the item. If true, then the inventory quantity changes are tracked by Shopify."
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the inventory item was last modified."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -1392.4100918874224,
+        "y": -219.54543291856564
+      },
+      "width": 250,
+      "height": 290,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1392.4100918874224,
+        "y": -219.54543291856564
+      },
+      "dragging": false
+    },
+    {
+      "id": "inventory_level",
+      "type": "table",
+      "data": {
+        "name": "inventory_level",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "available",
+            "type": "INT64",
+            "comment": "The available quantity of an inventory item at the inventory level's associated location. Returns null if the inventory item is not tracked."
+          },
+          {
+            "name": "inventory_item_id",
+            "type": "INT64",
+            "comment": "The ID of the inventory item associated with the inventory level."
+          },
+          {
+            "name": "location_id",
+            "type": "INT64",
+            "comment": "The ID of the location that the inventory level belongs to."
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the inventory level was last modified."
+          }
+        ],
+        "constraints": [
+          {
+            "type": "UNIQUE",
+            "columns": [
+              "inventory_item_id",
+              "location_id"
+            ]
+          }
+        ]
+      },
+      "position": {
+        "x": -1776.9366563307044,
+        "y": -151.95431825709616
+      },
+      "width": 250,
+      "height": 146,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1776.9366563307044,
+        "y": -151.95431825709616
+      },
+      "dragging": false
+    },
+    {
+      "id": "location",
+      "type": "table",
+      "data": {
+        "name": "location",
+        "columns": [
+          {
+            "name": "_fivetran_deleted",
+            "type": "BOOL",
+            "comment": "{{ doc('_fivetran_deleted') }}"
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "active",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the location is active. If true, then the location can be used to sell products, stock inventory, and fulfill orders.\n"
+          },
+          {
+            "name": "address_1",
+            "type": "STRING",
+            "comment": "The location's street address."
+          },
+          {
+            "name": "address_2",
+            "type": "INT64",
+            "comment": "The optional second line of the location's street address."
+          },
+          {
+            "name": "city",
+            "type": "STRING",
+            "comment": "The city the location is in."
+          },
+          {
+            "name": "country",
+            "type": "STRING",
+            "comment": "The country the location is in (two-letter code)."
+          },
+          {
+            "name": "country_code",
+            "type": "STRING",
+            "comment": "The two-letter code (ISO 3166-1 alpha-2 format) corresponding to country the location is in."
+          },
+          {
+            "name": "country_name",
+            "type": "STRING",
+            "comment": "Full name of the location's country."
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the location was created."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID of the location."
+          },
+          {
+            "name": "legacy",
+            "type": "BOOL",
+            "comment": "Boolean representing whether this is a fulfillment service location. If true, then the location is a fulfillment service location.  If false, then the location was created by the merchant and isn't tied to a fulfillment service.\n"
+          },
+          {
+            "name": "localized_country_name",
+            "type": "STRING",
+            "comment": "The localized name of the location's country."
+          },
+          {
+            "name": "localized_province_name",
+            "type": "STRING",
+            "comment": "The localized name of the location's region. Typically a province, state, or district."
+          },
+          {
+            "name": "name",
+            "type": "STRING",
+            "comment": "The name of the location."
+          },
+          {
+            "name": "phone",
+            "type": "INT64",
+            "comment": "The phone number of the location. This value can contain special characters, such as - or +."
+          },
+          {
+            "name": "province",
+            "type": "STRING",
+            "comment": "The province, state, or district of the location."
+          },
+          {
+            "name": "province_code",
+            "type": "STRING",
+            "comment": "The province, state, or district code (ISO 3166-2 alpha-2 format) of the location."
+          },
+          {
+            "name": "updated_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the location was last updated."
+          },
+          {
+            "name": "zip",
+            "type": "INT64",
+            "comment": "The zip or postal code."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": 410.14846978109176,
+        "y": 369.34640896327255
+      },
+      "width": 250,
+      "height": 506,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 410.14846978109176,
+        "y": 369.34640896327255
+      },
+      "dragging": false
+    },
+    {
+      "id": "metafield",
+      "type": "table",
+      "data": {
+        "name": "metafield",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "TIMESTAMP",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the metafield was created."
+          },
+          {
+            "name": "description",
+            "type": "INT64",
+            "comment": "A description of the information that the metafield contains."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The unique ID of the metafield."
+          },
+          {
+            "name": "key",
+            "type": "STRING",
+            "comment": "The key of the metafield. Keys can be up to 64 characters long and can contain alphanumeric characters, hyphens, underscores, and periods."
+          },
+          {
+            "name": "namespace",
+            "type": "STRING",
+            "comment": "A container for a group of metafields. Grouping metafields within a namespace prevents your metafields from conflicting with other metafields with the same key name. Must have between 3-255 characters."
+          },
+          {
+            "name": "owner_id",
+            "type": "INT64",
+            "comment": "The unique ID of the resource that the metafield is attached to."
+          },
+          {
+            "name": "owner_resource",
+            "type": "STRING",
+            "comment": "The type of resource (table) that the metafield is attached to."
+          },
+          {
+            "name": "type",
+            "type": "STRING",
+            "comment": "The type of data that the metafield stores in the `value` field. Refer to the [list](https://shopify.dev/apps/metafields/types) of supported types. Use this instead of `value_type`."
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "comment": "The date and time (ISO 8601 format) when the metafield was last updated."
+          },
+          {
+            "name": "value",
+            "type": "STRING",
+            "comment": "The data to store in the metafield. The value is always stored as a string, regardless of the metafield's type."
+          },
+          {
+            "name": "value_type",
+            "type": "STRING",
+            "comment": "DEPRECATED as of [June 2022](https://fivetran.com/docs/applications/shopify/changelog#june2022). Use `type` instead."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -947.127977451913,
+        "y": -346.4495635665292
+      },
+      "width": 250,
+      "height": 314,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -947.127977451913,
+        "y": -346.4495635665292
+      },
+      "dragging": false
+    },
+    {
+      "id": "order_note_attribute",
+      "type": "table",
+      "data": {
+        "name": "order_note_attribute",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "name",
+            "type": "STRING",
+            "comment": "Name of the attribute."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "ID referencing the order the note attribute belongs to."
+          },
+          {
+            "name": "value",
+            "type": "STRING",
+            "comment": "Value of the attribute."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -562.5559517546085,
+        "y": 680.1464155183999
+      },
+      "width": 250,
+      "height": 122,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -562.5559517546085,
+        "y": 680.1464155183999
+      },
+      "dragging": false
+    },
+    {
+      "id": "order_shipping_line",
+      "type": "table",
+      "data": {
+        "name": "order_shipping_line",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "carrier_identifier",
+            "type": "INT64",
+            "comment": "A reference to the carrier service that provided the rate. Present when the rate was computed by a third-party carrier service."
+          },
+          {
+            "name": "code",
+            "type": "STRING",
+            "comment": "A reference to the shipping method."
+          },
+          {
+            "name": "delivery_category",
+            "type": "INT64",
+            "comment": "The general classification of the delivery method."
+          },
+          {
+            "name": "discounted_price",
+            "type": "FLOAT64",
+            "comment": "The pre-tax shipping price with discounts applied in the shop currency."
+          },
+          {
+            "name": "discounted_price_set",
+            "type": "STRING",
+            "comment": "The pre-tax shipping price with discounts applied (JSON) in presentment and shop currencies."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "A globally-unique identifier."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "ID of the associated order."
+          },
+          {
+            "name": "phone",
+            "type": "INT64",
+            "comment": "The phone number at the shipping address."
+          },
+          {
+            "name": "price",
+            "type": "FLOAT64",
+            "comment": "Returns the price of the shipping line in shop currency."
+          },
+          {
+            "name": "price_set",
+            "type": "STRING",
+            "comment": "Returns the price of the shipping line (JSON) in presentment and shop currencies."
+          },
+          {
+            "name": "requested_fulfillment_service_id",
+            "type": "INT64",
+            "comment": "The fulfillment service requested for the shipping method. Present if the shipping method requires processing by a third party fulfillment service."
+          },
+          {
+            "name": "source",
+            "type": "STRING",
+            "comment": "Returns the rate source for the shipping line."
+          },
+          {
+            "name": "title",
+            "type": "STRING",
+            "comment": "Returns the title of the shipping line."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -993.2472621031654,
+        "y": 430.08277595846886
+      },
+      "width": 250,
+      "height": 380,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -993.2472621031654,
+        "y": 430.08277595846886
+      },
+      "dragging": false
+    },
+    {
+      "id": "order_shipping_tax_line",
+      "type": "table",
+      "data": {
+        "name": "order_shipping_tax_line",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "index",
+            "type": "INT64",
+            "comment": "Index (from 1) representing the order of shipping lines per order."
+          },
+          {
+            "name": "order_shipping_line_id",
+            "type": "INT64",
+            "comment": "ID of the order shipping line this recod is associated with."
+          },
+          {
+            "name": "price",
+            "type": "FLOAT64",
+            "comment": "The amount of tax, in shop currency, after discounts and before returns."
+          },
+          {
+            "name": "price_set",
+            "type": "STRING",
+            "comment": "The amount of tax, in shop and presentment currencies, after discounts and before returns (JSON)."
+          },
+          {
+            "name": "rate",
+            "type": "FLOAT64",
+            "comment": "The proportion of the line item price that the tax represents as a decimal."
+          },
+          {
+            "name": "title",
+            "type": "STRING",
+            "comment": "The name of the tax."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": 178.0892449829069,
+        "y": -693.6617699986273
+      },
+      "width": 250,
+      "height": 194,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 178.0892449829069,
+        "y": -693.6617699986273
+      },
+      "dragging": false
+    },
+    {
+      "id": "order_tag",
+      "type": "table",
+      "data": {
+        "name": "order_tag",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "index",
+            "type": "INT64",
+            "comment": "Index (starting from 1) represnting when the tag was placed on the order."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "ID of the order being tagged."
+          },
+          {
+            "name": "value",
+            "type": "STRING",
+            "comment": "Value of the tag."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -544.3403607295916,
+        "y": 484.57763039710346
+      },
+      "width": 250,
+      "height": 122,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -544.3403607295916,
+        "y": 484.57763039710346
+      },
+      "dragging": false
+    },
+    {
+      "id": "order_url_tag",
+      "type": "table",
+      "data": {
+        "name": "order_url_tag",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "key",
+            "type": "STRING",
+            "comment": "Key of the tag pair."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "ID of the order url being tagged."
+          },
+          {
+            "name": "value",
+            "type": "STRING",
+            "comment": "Value of the tag."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -539.7590875315991,
+        "y": 847.357581263301
+      },
+      "width": 250,
+      "height": 122,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -539.7590875315991,
+        "y": 847.357581263301
+      },
+      "dragging": false
+    },
+    {
+      "id": "price_rule",
+      "type": "table",
+      "data": {
+        "name": "price_rule",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "allocation_limit",
+            "type": "INT64",
+            "comment": "The number of times the discount can be allocated on the cart - if eligible. For example a Buy 1 hat Get 1 hat for free discount can be applied 3 times on a cart having more than 6 hats,  where maximum of 3 hats get discounted - if the allocation_limit is 3. Empty (null) allocation_limit means unlimited number of allocations.\n"
+          },
+          {
+            "name": "allocation_method",
+            "type": "STRING",
+            "comment": "The allocation method of the price rule. Valid values include `each` (the discount is applied to each of the entitled items. For example, for a price rule that takes $15 off, each entitled line item in a checkout will be discounted by $15) and `across` (the calculated discount amount will be applied across the entitled items. For example, for a price rule that takes $15 off, the discount will be applied across all the entitled items).\n"
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the price rule was created."
+          },
+          {
+            "name": "customer_selection",
+            "type": "STRING",
+            "comment": "The customer selection for the price rule. Valid values include `all` (the price rule is valid for all customers) and `prerequisite`  (the customer must either belong to one of the customer segments specified by customer_segment_prerequisite_ids, or be one of the customers specified by prerequisite_customer_ids).\n"
+          },
+          {
+            "name": "ends_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the price rule ends. Must be after starts_at."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID for the price rule."
+          },
+          {
+            "name": "once_per_customer",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the generated discount code will be valid only for a single use per customer. This is tracked using customer ID."
+          },
+          {
+            "name": "prerequisite_quantity_range",
+            "type": "INT64",
+            "comment": "If `customer_selection` is `prerequisite`, the minimum number of items for the price rule to be applicable. The quantity of an entitled cart item must be greater than or equal to this value."
+          },
+          {
+            "name": "prerequisite_shipping_price_range",
+            "type": "INT64",
+            "comment": "If `customer_selection` is `prerequisite`, the maximum shipping price for the price rule to be applicable. The shipping price must be less than or equal to this value"
+          },
+          {
+            "name": "prerequisite_subtotal_range",
+            "type": "FLOAT64",
+            "comment": "If `customer_selection` is `prerequisite`, the minimum subtotal for the price rule to be applicable. The subtotal of the entitled cart items must be greater than or equal to this value for the discount to apply."
+          },
+          {
+            "name": "prerequisite_to_entitlement_purchase_prerequisite_amount",
+            "type": "INT64",
+            "comment": "If `customer_selection` is `prerequisite`, the prerequisite purchase for a Buy X Get Y discount. The minimum purchase amount required to be entitled to the discount."
+          },
+          {
+            "name": "quantity_ratio_entitled_quantity",
+            "type": "INT64",
+            "comment": "If `customer_selection` is `prerequisite`, in a Buy/Get ratio for a Buy X Get Y discount, this is the offered 'get' quantity."
+          },
+          {
+            "name": "quantity_ratio_prerequisite_quantity",
+            "type": "INT64",
+            "comment": "If `customer_selection` is `prerequisite`, in a Buy/Get ratio for a Buy X Get Y discount, this defines the necessary 'buy' quantity."
+          },
+          {
+            "name": "starts_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the price rule starts."
+          },
+          {
+            "name": "target_selection",
+            "type": "STRING",
+            "comment": "The target selection method of the price rule. Valid values include `all` (the price rule applies the discount to all line items in the checkout) and  `entitled` (the price rule applies the discount to selected entitlements only).\n"
+          },
+          {
+            "name": "target_type",
+            "type": "STRING",
+            "comment": "The target type that the price rule applies to. Valid values include `line_item` (the price rule applies to the cart's line items) and `shipping_line` (the price rule applies to the cart's shipping lines)."
+          },
+          {
+            "name": "title",
+            "type": "STRING",
+            "comment": "The title of the price rule. This is used by the Shopify admin search to retrieve discounts. It is also displayed on the Discounts page of the Shopify admin for bulk discounts.  Shopify recommends that this map onto the associated `discount_code.code`.\n"
+          },
+          {
+            "name": "updated_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the price rule was updated."
+          },
+          {
+            "name": "usage_limit",
+            "type": "INT64",
+            "comment": "The maximum number of times the price rule can be used, per discount code."
+          },
+          {
+            "name": "value",
+            "type": "FLOAT64",
+            "comment": "The value of the price rule. If if the value of `target_type` is `shipping_line`, then only -100 is accepted. The value must be negative."
+          },
+          {
+            "name": "value_type",
+            "type": "STRING",
+            "comment": "The value type of the price rule. Valid values include `fixed_amount` (applies a discount of value as a unit of the store's currency. For example, if value is -30 and the store's currency is USD, then $30 USD is deducted when the discount is applied) and `percentage` (applies a percentage discount of value. For example, if value is -30, then 30% will be deducted when the discount is applied).\nIf `target_type` is `shipping_line`, then only `percentage` is accepted.\n"
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": 605.5890563479835,
+        "y": 1278.002521864007
+      },
+      "width": 250,
+      "height": 608,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 605.5890563479835,
+        "y": 1278.002521864007
+      },
+      "dragging": false
+    },
+    {
+      "id": "product_image",
+      "type": "table",
+      "data": {
+        "name": "product_image",
+        "columns": [
+          {
+            "name": "_fivetran_deleted",
+            "type": "BOOL",
+            "comment": "{{ doc('_fivetran_deleted') }}"
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "The date and time when the product image was created. The API returns this value in ISO 8601 format."
+          },
+          {
+            "name": "height",
+            "type": "INT64",
+            "comment": "Height dimension of the image which is determined on upload."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "Unique numeric identifier of the product image."
+          },
+          {
+            "name": "position",
+            "type": "INT64",
+            "comment": "The order of the product image in the list. The first product image is at position 1 and is the \"main\" image for the product."
+          },
+          {
+            "name": "product_id",
+            "type": "INT64",
+            "comment": "The id of the product associated with the image."
+          },
+          {
+            "name": "src",
+            "type": "STRING",
+            "comment": "Specifies the location of the product image. This parameter supports URL filters that you can use to retrieve modified copies of the image."
+          },
+          {
+            "name": "updated_at",
+            "type": "STRING",
+            "comment": "The date and time when the product image was last modified. The API returns this value in ISO 8601 format."
+          },
+          {
+            "name": "variant_ids",
+            "type": "STRING",
+            "comment": "An array of variant ids associated with the image."
+          },
+          {
+            "name": "width",
+            "type": "INT64",
+            "comment": "Width dimension of the image which is determined on upload."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -1196.12708168869,
+        "y": 1254.423795637728
+      },
+      "width": 250,
+      "height": 290,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1196.12708168869,
+        "y": 1254.423795637728
+      },
+      "dragging": false
+    },
+    {
+      "id": "product_tag",
+      "type": "table",
+      "data": {
+        "name": "product_tag",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "index",
+            "type": "INT64",
+            "comment": "Index (starting from 1) represnting when the tag was placed on the product."
+          },
+          {
+            "name": "product_id",
+            "type": "INT64",
+            "comment": "ID of the product being tagged."
+          },
+          {
+            "name": "value",
+            "type": "STRING",
+            "comment": "Value of the tag."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -898.8475389426848,
+        "y": 1061.6260396582159
+      },
+      "width": 250,
+      "height": 122,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -898.8475389426848,
+        "y": 1061.6260396582159
+      },
+      "dragging": false
+    },
+    {
+      "id": "shop",
+      "type": "table",
+      "data": {
+        "name": "shop",
+        "columns": [
+          {
+            "name": "_fivetran_deleted",
+            "type": "BOOL",
+            "comment": "{{ doc('_fivetran_deleted') }}"
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "address_1",
+            "type": "STRING",
+            "comment": "The shop's street address."
+          },
+          {
+            "name": "address_2",
+            "type": "STRING",
+            "comment": "The optional second line of the shop's street address."
+          },
+          {
+            "name": "checkout_api_supported",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the shop is capable of accepting payments directly through the Checkout API."
+          },
+          {
+            "name": "city",
+            "type": "STRING",
+            "comment": "The shop's city."
+          },
+          {
+            "name": "cookie_consent_level",
+            "type": "STRING",
+            "comment": "The cookie consent level defined on the shop's online store."
+          },
+          {
+            "name": "country",
+            "type": "STRING",
+            "comment": "The shop's country. In most cases, this value matches the country_code."
+          },
+          {
+            "name": "country_code",
+            "type": "STRING",
+            "comment": "The two-letter country code corresponding to the shop's country."
+          },
+          {
+            "name": "country_name",
+            "type": "STRING",
+            "comment": "The shop's normalized country name."
+          },
+          {
+            "name": "county_taxes",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the shop is applying taxes on a per-county basis. Only applicable to shops based in the US. Either `true` or `null` (not false, according to Shopify API docs)."
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601) when the shop was created."
+          },
+          {
+            "name": "currency",
+            "type": "STRING",
+            "comment": "The three-letter code (ISO 4217 format) for the shop's default currency."
+          },
+          {
+            "name": "customer_email",
+            "type": "STRING",
+            "comment": "The contact email used for communication between the shop owner and the customer."
+          },
+          {
+            "name": "domain",
+            "type": "STRING",
+            "comment": "The shop's domain."
+          },
+          {
+            "name": "eligible_for_card_reader_giveaway",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the shop is eligible to receive a free credit card reader from Shopify."
+          },
+          {
+            "name": "eligible_for_payments",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the shop is eligible to use Shopify Payments."
+          },
+          {
+            "name": "email",
+            "type": "STRING",
+            "comment": "The contact email used for communication between Shopify and the shop owner."
+          },
+          {
+            "name": "enabled_presentment_currencies",
+            "type": "STRING",
+            "comment": "An array of of enabled currencies (ISO 4217 format) that the shop accepts. Merchants can enable currencies from their Shopify Payments settings in the Shopify Admin."
+          },
+          {
+            "name": "force_ssl",
+            "type": "BOOL",
+            "comment": "DEPRECATED."
+          },
+          {
+            "name": "google_apps_domain",
+            "type": "INT64",
+            "comment": "The GSuite URL for the store, if applicable."
+          },
+          {
+            "name": "google_apps_login_enabled",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the GSuite login is enabled. Shops with this feature will be able to log in through the GSuite login page. Valid values are `true` and `null`."
+          },
+          {
+            "name": "has_discounts",
+            "type": "BOOL",
+            "comment": "Boolean representing whether any active discounts exist for the shop."
+          },
+          {
+            "name": "has_gift_cards",
+            "type": "BOOL",
+            "comment": "Boolean representing whether any active gift cards exist for the shop."
+          },
+          {
+            "name": "has_storefront",
+            "type": "BOOL",
+            "comment": "Boolean representing whether this shop has an online store."
+          },
+          {
+            "name": "iana_timezone",
+            "type": "STRING",
+            "comment": "The name of the timezone assigned by the [IANA](https://www.iana.org/time-zones)."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID for the shop. A 64-bit unsigned integer."
+          },
+          {
+            "name": "latitude",
+            "type": "FLOAT64",
+            "comment": "The latitude of the shop's location."
+          },
+          {
+            "name": "longitude",
+            "type": "FLOAT64",
+            "comment": "The longitude of the shop's location."
+          },
+          {
+            "name": "money_format",
+            "type": "STRING",
+            "comment": "A string representing the way currency is formatted when the currency isn't specified."
+          },
+          {
+            "name": "money_in_emails_format",
+            "type": "STRING",
+            "comment": "A string representing the way currency is formatted in email notifications when the currency isn't specified."
+          },
+          {
+            "name": "money_with_currency_format",
+            "type": "STRING",
+            "comment": "A string representing the way currency is formatted when the currency is specified."
+          },
+          {
+            "name": "money_with_currency_in_emails_format",
+            "type": "STRING",
+            "comment": "A string representing the way currency is formatted in email notifications when the currency is specified."
+          },
+          {
+            "name": "multi_location_enabled",
+            "type": "BOOL",
+            "comment": "DEPRECATED and hard-coded to `true`."
+          },
+          {
+            "name": "myshopify_domain",
+            "type": "STRING",
+            "comment": "The shop's .myshopify.com domain."
+          },
+          {
+            "name": "name",
+            "type": "STRING",
+            "comment": "The name of the shop."
+          },
+          {
+            "name": "password_enabled",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the password protection page is enabled on the shop's online store."
+          },
+          {
+            "name": "phone",
+            "type": "INT64",
+            "comment": "The contact phone number for the shop."
+          },
+          {
+            "name": "plan_display_name",
+            "type": "STRING",
+            "comment": "The display name of the Shopify plan the shop is on."
+          },
+          {
+            "name": "plan_name",
+            "type": "STRING",
+            "comment": "The name of the Shopify plan the shop is on."
+          },
+          {
+            "name": "pre_launch_enabled",
+            "type": "BOOL",
+            "comment": "Boolen representing whether the pre-launch page is enabled on the shop's online store."
+          },
+          {
+            "name": "primary_locale",
+            "type": "STRING",
+            "comment": "The shop's primary locale, as configured in the language settings of the shop's theme."
+          },
+          {
+            "name": "primary_location_id",
+            "type": "INT64",
+            "comment": "DEPRECATED. Formerly used for the ID of the shipping origin location."
+          },
+          {
+            "name": "province",
+            "type": "STRING",
+            "comment": "The shop's normalized province or state name."
+          },
+          {
+            "name": "province_code",
+            "type": "STRING",
+            "comment": "The two- or three-letter code for the shop's province or state."
+          },
+          {
+            "name": "requires_extra_payments_agreement",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the shop requires an extra Shopify Payments agreement."
+          },
+          {
+            "name": "setup_required",
+            "type": "BOOL",
+            "comment": "Boolean representing whether the shop has any outstanding setup steps."
+          },
+          {
+            "name": "shop_owner",
+            "type": "STRING",
+            "comment": "The username of the shop owner."
+          },
+          {
+            "name": "source",
+            "type": "INT64",
+            "comment": "The handle of the partner account that referred the merchant to Shopify, if applicable."
+          },
+          {
+            "name": "tax_shipping",
+            "type": "INT64",
+            "comment": "Boolean representing whether taxes are charged for shipping. Valid values are true or false."
+          },
+          {
+            "name": "taxes_included",
+            "type": "BOOL",
+            "comment": "Boolean representing whether applicable taxes are included in product prices. Valid values are true or null."
+          },
+          {
+            "name": "timezone",
+            "type": "STRING",
+            "comment": "The name of the timezone the shop is in."
+          },
+          {
+            "name": "updated_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601) when the shop was last updated."
+          },
+          {
+            "name": "weight_unit",
+            "type": "STRING",
+            "comment": "The default unit of weight measurement for the shop."
+          },
+          {
+            "name": "zip",
+            "type": "INT64",
+            "comment": "The shop's zip or postal code."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -2293.7508936908116,
+        "y": -667.8946781038393
+      },
+      "width": 250,
+      "height": 1418,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -2293.7508936908116,
+        "y": -667.8946781038393
+      },
+      "dragging": false
+    },
+    {
+      "id": "tender_transaction",
+      "type": "table",
+      "data": {
+        "name": "tender_transaction",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "amount",
+            "type": "FLOAT64",
+            "comment": "The amount of the tender transaction in the shop's currency."
+          },
+          {
+            "name": "currency",
+            "type": "STRING",
+            "comment": "The three-letter code (ISO 4217 format) for the currency used for the tender transaction."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "The ID of the transaction."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "The ID of the order that the tender transaction belongs to."
+          },
+          {
+            "name": "payment_method",
+            "type": "STRING",
+            "comment": "Information about the payment method used for this transaction. Valid values include: - credit_card - cash - android_pay - apple_pay - google_pay - samsung_pay - shopify_pay - amazon - klarna - paypal - unknown - other\n"
+          },
+          {
+            "name": "processed_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the tender transaction was processed."
+          },
+          {
+            "name": "remote_reference",
+            "type": "INT64",
+            "comment": "The remote (gateway) reference associated with the tender."
+          },
+          {
+            "name": "test",
+            "type": "BOOL",
+            "comment": "Whether the tender transaction is a test transaction."
+          },
+          {
+            "name": "user_id",
+            "type": "INT64",
+            "comment": "The ID of the user logged into the Shopify POS device that processed the tender transaction, if applicable."
+          }
+        ],
+        "constraints": []
+      },
+      "position": {
+        "x": -1024.6627328732966,
+        "y": 72.84460410609682
+      },
+      "width": 250,
+      "height": 266,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1024.6627328732966,
+        "y": 72.84460410609682
+      },
+      "dragging": false
+    },
+    {
+      "id": "abandoned_checkout_discount_code",
+      "type": "table",
+      "data": {
+        "name": "abandoned_checkout_discount_code",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "TIMESTAMP",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "amount",
+            "type": "FLOAT64",
+            "comment": "The amount of the discount in presentment currency."
+          },
+          {
+            "name": "checkout_id",
+            "type": "INT64",
+            "comment": "ID of the checkout."
+          },
+          {
+            "name": "code",
+            "type": "STRING",
+            "comment": "The discount code."
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP",
+            "comment": "When the checkout discount application was created."
+          },
+          {
+            "name": "discount_id",
+            "type": "INT64",
+            "comment": "ID of the discount. Deprecated, use `code` instead."
+          },
+          {
+            "name": "index",
+            "type": "INT64",
+            "comment": "Index (from 1) representing the application of the discount to the checkout. Use the latest (highest index)"
+          },
+          {
+            "name": "type",
+            "type": "STRING",
+            "comment": "The type of discount. Valid values - percentage, shipping, fixed_amount. (default - fixed_amount)"
+          },
+          {
+            "name": "updated_at",
+            "type": "TIMESTAMP",
+            "comment": "When the checkout's discount was last updated"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "fk_checkout_id",
+            "type": "foreign_key",
+            "columns": [
+              "checkout_id"
+            ],
+            "reference": {
+              "table": "checkout",
+              "columns": [
+                "id"
+              ]
+            }
+          },
+          {
+            "name": "fk_discount_id",
+            "type": "foreign_key",
+            "columns": [
+              "discount_id"
+            ],
+            "reference": {
+              "table": "discount",
+              "columns": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": 1149.7808454416668,
+        "y": -403.1398281270026
+      },
+      "width": 250,
+      "height": 242,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1149.7808454416668,
+        "y": -403.1398281270026
+      },
+      "dragging": false
+    },
+    {
+      "id": "order_discount_code",
+      "type": "table",
+      "data": {
+        "name": "order_discount_code",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "amount",
+            "type": "FLOAT64",
+            "comment": "The amount that's deducted from the order total."
+          },
+          {
+            "name": "code",
+            "type": "STRING",
+            "comment": "This property returns the discount code that was entered at checkout. Otherwise this property returns the title of the discount that was applied."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "Associated order ID."
+          },
+          {
+            "name": "type",
+            "type": "STRING",
+            "comment": "The type of discount - `fixed_amount`, `percentage`, or `shipping`."
+          },
+          {
+            "name": "index",
+            "type": "INT64",
+            "comment": "Pairs with `order_id` to provide unique identifier for order discount code."
+          }
+        ],
+        "constraints": [
+          {
+            "name": "fk_order_id",
+            "type": "foreign_key",
+            "columns": [
+              "order_id"
+            ],
+            "reference": {
+              "table": "order",
+              "columns": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": -1268.6399131766902,
+        "y": -861.9934875358047
+      },
+      "width": 250,
+      "height": 170,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1268.6399131766902,
+        "y": -861.9934875358047
+      },
+      "dragging": false
+    },
+    {
+      "id": "abandoned_checkout_shipping_line",
+      "type": "table",
+      "data": {
+        "name": "abandoned_checkout_shipping_line",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "carrier_identifier",
+            "type": "INT64",
+            "comment": "A reference to the carrier service that provided the rate. Present when the rate was computed by a third-party carrier service."
+          },
+          {
+            "name": "checkout_id",
+            "type": "INT64",
+            "comment": "ID of the checkout that was abandoned."
+          },
+          {
+            "name": "code",
+            "type": "STRING",
+            "comment": "A reference to the shipping method."
+          },
+          {
+            "name": "delivery_category",
+            "type": "INT64",
+            "comment": "The general classification of the delivery method."
+          },
+          {
+            "name": "delivery_expectation_range",
+            "type": "INT64",
+            "comment": "Expected delivery date range."
+          },
+          {
+            "name": "delivery_expectation_range_max",
+            "type": "INT64",
+            "comment": "Latest expected delivery date."
+          },
+          {
+            "name": "delivery_expectation_range_min",
+            "type": "INT64",
+            "comment": "Earliest possible expected delivery date."
+          },
+          {
+            "name": "delivery_expectation_type",
+            "type": "INT64",
+            "comment": "Type of expected delivery."
+          },
+          {
+            "name": "discounted_price",
+            "type": "INT64",
+            "comment": "The pre-tax shipping price with discounts applied in _presentment_ (customer) currency."
+          },
+          {
+            "name": "id",
+            "type": "STRING",
+            "comment": "Unique ID of the abandoned checkout shipping line."
+          },
+          {
+            "name": "index",
+            "type": "INT64",
+            "comment": "Index of the line amongst shipping lines for this checkout."
+          },
+          {
+            "name": "original_shop_price",
+            "type": "STRING",
+            "comment": "The pre-tax shipping price without any discounts applied in _presentment_ (customer) currency."
+          },
+          {
+            "name": "phone",
+            "type": "INT64",
+            "comment": "The phone number at the shipping address."
+          },
+          {
+            "name": "price",
+            "type": "FLOAT64",
+            "comment": "The price of the shipping method in presentment currency."
+          },
+          {
+            "name": "requested_fulfillment_service_id",
+            "type": "INT64",
+            "comment": "The fulfillment service requested for the shipping method. Present if the shipping method requires processing by a third party fulfillment service."
+          },
+          {
+            "name": "source",
+            "type": "STRING",
+            "comment": "The channel where the checkout originated. Example value - shopify."
+          },
+          {
+            "name": "title",
+            "type": "STRING",
+            "comment": "The title of the shipping method. Example value - International Shipping."
+          }
+        ],
+        "constraints": [
+          {
+            "name": "fk_checkout_id",
+            "type": "foreign_key",
+            "columns": [
+              "checkout_id"
+            ],
+            "reference": {
+              "table": "checkout",
+              "columns": [
+                "id"
+              ]
+            }
+          },
+          {
+            "name": "fk_requested_fulfillment_service_id",
+            "type": "foreign_key",
+            "columns": [
+              "requested_fulfillment_service_id"
+            ],
+            "reference": {
+              "table": "fulfillment_service",
+              "columns": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": 1118.666882287682,
+        "y": 841.2328638708765
+      },
+      "width": 250,
+      "height": 512,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1118.666882287682,
+        "y": 841.2328638708765
+      },
+      "dragging": false
+    },
+    {
+      "id": "fulfillment_event",
+      "type": "table",
+      "data": {
+        "name": "fulfillment_event",
+        "columns": [
+          {
+            "name": "_fivetran_deleted",
+            "type": "BOOL",
+            "comment": "{{ doc('_fivetran_deleted') }}"
+          },
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "address_1",
+            "type": "INT64",
+            "comment": "The street address where the fulfillment event occurred."
+          },
+          {
+            "name": "city",
+            "type": "STRING",
+            "comment": "The city where the fulfillment event occurred."
+          },
+          {
+            "name": "country",
+            "type": "STRING",
+            "comment": "The country where the fulfillment event occurred."
+          },
+          {
+            "name": "created_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the fulfillment event was created."
+          },
+          {
+            "name": "estimated_delivery_at",
+            "type": "STRING",
+            "comment": "The estimated delivery date based on the fulfillment's tracking number, as long as it's provided by one of the following carriers: USPS, FedEx, UPS, or Canada Post (Canada only).  Value is `null` if no tracking number is available or if the tracking number is from an unsupported carrier. This property is available only when carrier calculated rates are in use.\n"
+          },
+          {
+            "name": "fulfillment_id",
+            "type": "INT64",
+            "comment": "An ID for the fulfillment that's associated with the fulfillment event."
+          },
+          {
+            "name": "happened_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the fulfillment event occurred."
+          },
+          {
+            "name": "id",
+            "type": "INT64",
+            "comment": "An ID for the fulfillment event."
+          },
+          {
+            "name": "latitude",
+            "type": "FLOAT64",
+            "comment": "A geographic coordinate specifying the latitude of the fulfillment event."
+          },
+          {
+            "name": "longitude",
+            "type": "FLOAT64",
+            "comment": "A geographic coordinate specifying the longitude of the fulfillment event."
+          },
+          {
+            "name": "message",
+            "type": "STRING",
+            "comment": "An arbitrary message describing the status. Can be provided by a shipping carrier."
+          },
+          {
+            "name": "order_id",
+            "type": "INT64",
+            "comment": "The ID of the order that's associated with the fulfillment event."
+          },
+          {
+            "name": "province",
+            "type": "STRING",
+            "comment": "The province where the fulfillment event occurred."
+          },
+          {
+            "name": "shop_id",
+            "type": "INT64",
+            "comment": "An ID for the shop that's associated with the fulfillment event."
+          },
+          {
+            "name": "status",
+            "type": "STRING",
+            "comment": "The status of the fulfillment event. Valid values: - label_printed: A label for the shipment was purchased and printed. - label_purchased: A label for the shipment was purchased, but not printed. - attempted_delivery: Delivery of the shipment was attempted, but unable to be completed. - ready_for_pickup: The shipment is ready for pickup at a shipping depot. - picked_up: The fulfillment was successfully picked up. - confirmed: The carrier is aware of the shipment, but hasn't received it yet. - in_transit: The shipment is being transported between shipping facilities on the way to its destination. - out_for_delivery: The shipment is being delivered to its final destination. - delivered: The shipment was successfully delivered. - failure: Something went wrong when pulling tracking information for the shipment, such as the tracking number was invalid or the shipment was canceled.\n"
+          },
+          {
+            "name": "updated_at",
+            "type": "STRING",
+            "comment": "The date and time (ISO 8601 format) when the fulfillment event was updated."
+          },
+          {
+            "name": "zip",
+            "type": "STRING",
+            "comment": "The zip code of the location where the fulfillment event occurred."
+          }
+        ],
+        "constraints": [
+          {
+            "name": "fk_fulfillment_id",
+            "type": "foreign_key",
+            "columns": [
+              "fulfillment_id"
+            ],
+            "reference": {
+              "table": "fulfillment",
+              "columns": [
+                "id"
+              ]
+            }
+          },
+          {
+            "name": "fk_order_id",
+            "type": "foreign_key",
+            "columns": [
+              "order_id"
+            ],
+            "reference": {
+              "table": "order",
+              "columns": [
+                "id"
+              ]
+            }
+          },
+          {
+            "name": "fk_shop_id",
+            "type": "foreign_key",
+            "columns": [
+              "shop_id"
+            ],
+            "reference": {
+              "table": "shop",
+              "columns": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": -1208.5860920284438,
+        "y": 1599.8768039505705
+      },
+      "width": 250,
+      "height": 482,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -1208.5860920284438,
+        "y": 1599.8768039505705
+      },
+      "dragging": false
+    },
+    {
+      "id": "tax_line",
+      "type": "table",
+      "data": {
+        "name": "tax_line",
+        "columns": [
+          {
+            "name": "_fivetran_synced",
+            "type": "STRING",
+            "comment": "{{ doc('_fivetran_synced') }}"
+          },
+          {
+            "name": "index",
+            "type": "INT64",
+            "comment": "The index of the tax line."
+          },
+          {
+            "name": "order_line_id",
+            "type": "INT64",
+            "comment": "The order line that this tax line is associated with."
+          },
+          {
+            "name": "price",
+            "type": "FLOAT64",
+            "comment": "The amount of tax, in shop currency, after discounts and before returns."
+          },
+          {
+            "name": "price_set",
+            "type": "STRING",
+            "comment": "The amount of tax, in shop and presentment currencies, after discounts and before returns."
+          },
+          {
+            "name": "rate",
+            "type": "FLOAT64",
+            "comment": "The proportion of the line item price that the tax represents as a decimal."
+          },
+          {
+            "name": "title",
+            "type": "STRING",
+            "comment": "The name of the tax."
+          }
+        ],
+        "constraints": [
+          {
+            "name": "fk_order_line_id",
+            "type": "foreign_key",
+            "columns": [
+              "order_line_id"
+            ],
+            "reference": {
+              "table": "order_line",
+              "columns": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "position": {
+        "x": 865.1900365334714,
+        "y": -676.8286665990872
+      },
+      "width": 250,
+      "height": 194,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 865.1900365334714,
+        "y": -676.8286665990872
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "customer-fk_customer",
+      "source": "customer",
+      "target": "customer_address",
+      "type": "foreign_key",
+      "animated": true
+    },
+    {
+      "source": "order_note_attribute",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_note_attributeorder_id-orderid",
+      "selected": false
+    },
+    {
+      "source": "customer_tag",
+      "sourceHandle": "customer_id",
+      "target": "customer",
+      "targetHandle": "id",
+      "id": "reactflow__edge-customer_tagcustomer_id-customerid",
+      "selected": false
+    },
+    {
+      "source": "order",
+      "sourceHandle": "location_id",
+      "target": "location",
+      "targetHandle": "id",
+      "id": "reactflow__edge-orderlocation_id-locationid",
+      "selected": false
+    },
+    {
+      "source": "order_adjustment",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_adjustmentorder_id-orderid",
+      "selected": false
+    },
+    {
+      "source": "product_image",
+      "sourceHandle": "product_id",
+      "target": "product",
+      "targetHandle": "id",
+      "id": "reactflow__edge-product_imageproduct_id-productid",
+      "selected": false
+    },
+    {
+      "source": "product_tag",
+      "sourceHandle": "product_id",
+      "target": "product",
+      "targetHandle": "id",
+      "id": "reactflow__edge-product_tagproduct_id-productid",
+      "selected": false
+    },
+    {
+      "source": "fulfillment_event",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-fulfillment_eventorder_id-orderid",
+      "selected": false
+    },
+    {
+      "source": "order",
+      "sourceHandle": "customer_id",
+      "target": "customer",
+      "targetHandle": "id",
+      "id": "reactflow__edge-ordercustomer_id-customerid",
+      "selected": false
+    },
+    {
+      "source": "order_line",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_lineorder_id-orderid",
+      "selected": false
+    },
+    {
+      "source": "order_line",
+      "sourceHandle": "product_id",
+      "target": "product",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_lineproduct_id-productid",
+      "selected": false
+    },
+    {
+      "source": "order_line",
+      "sourceHandle": "variant_id",
+      "target": "product_variant",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_linevariant_id-product_variantid",
+      "selected": false
+    },
+    {
+      "source": "fulfillment",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-fulfillmentorder_id-orderid",
+      "selected": false
+    },
+    {
+      "source": "order_shipping_line",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_shipping_lineorder_id-orderid",
+      "selected": false
+    },
+    {
+      "source": "order_tag",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_tagorder_id-orderid"
+    },
+    {
+      "source": "order_adjustment",
+      "sourceHandle": "refund_id",
+      "target": "refund",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_adjustmentrefund_id-refundid",
+      "selected": false
+    },
+    {
+      "source": "inventory_level",
+      "sourceHandle": "inventory_item_id",
+      "target": "inventory_item",
+      "targetHandle": "id",
+      "id": "reactflow__edge-inventory_levelinventory_item_id-inventory_itemid"
+    },
+    {
+      "source": "order_line_refund",
+      "sourceHandle": "refund_id",
+      "target": "refund",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_line_refundrefund_id-refundid"
+    },
+    {
+      "source": "order_line_refund",
+      "sourceHandle": "order_line_id",
+      "target": "order_line",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_line_refundorder_line_id-order_lineid"
+    },
+    {
+      "source": "transaction",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-transactionorder_id-orderid",
+      "selected": false
+    },
+    {
+      "source": "collection_product",
+      "sourceHandle": "product_id",
+      "target": "product",
+      "targetHandle": "id",
+      "id": "reactflow__edge-collection_productproduct_id-productid"
+    },
+    {
+      "source": "collection_product",
+      "sourceHandle": "collection_id",
+      "target": "collection",
+      "targetHandle": "id",
+      "id": "reactflow__edge-collection_productcollection_id-collectionid"
+    },
+    {
+      "source": "order_url_tag",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-order_url_tagorder_id-orderid",
+      "selected": false
+    },
+    {
+      "source": "discount_code",
+      "sourceHandle": "price_rule_id",
+      "target": "price_rule",
+      "targetHandle": "id",
+      "id": "reactflow__edge-discount_codeprice_rule_id-price_ruleid"
+    },
+    {
+      "source": "tender_transaction",
+      "sourceHandle": "order_id",
+      "target": "order",
+      "targetHandle": "id",
+      "id": "reactflow__edge-tender_transactionorder_id-orderid",
+      "selected": false
+    }
+  ],
+  "__v": 0
+}
